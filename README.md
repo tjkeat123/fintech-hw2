@@ -12,6 +12,7 @@ What is slippage in AMM, and how does Uniswap V2 address this issue? Please illu
 
 > slippage in AMM is the difference between expected price and the actual price when the trade execute. Uniswap address this issue by allowing user to set a maximum slippage, where the transaction will cancel if the slippage exceeds the maximum.
 
+```
 def uniswap_v2_trade(amount_in, reserve_in, reserve_out, fee=0.003, max_slippage=0.05):
     amount_in_with_fee = amount_in * (1 + fee)
     k = reserve_in * reserve_out
@@ -27,6 +28,7 @@ def uniswap_v2_trade(amount_in, reserve_in, reserve_out, fee=0.003, max_slippage
         raise Exception("Slippage exceeds tolerance")
 
     return expected_amount_out, slippage 
+```
 
 ## Problem 3
 Please examine the mint function in the UniswapV2Pair contract. Upon initial liquidity minting, a minimum liquidity is subtracted. What is the rationale behind this design?
